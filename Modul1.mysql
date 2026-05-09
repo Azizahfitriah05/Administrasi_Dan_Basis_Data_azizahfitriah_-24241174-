@@ -1,0 +1,79 @@
+Nama : Azizah Fitriah 
+Nim : 24241174
+
+CREATE DATABASE rumah_sakit;
+USE rumah_sakit;
+
+-- =====================================
+-- TABLE POLIKLINIK
+-- =====================================
+CREATE TABLE poliklinik (
+    kode_poli INT PRIMARY KEY,
+    nama_poli VARCHAR(20)
+);
+
+-- =====================================
+-- TABLE DOKTER
+-- =====================================
+CREATE TABLE dokter (
+    id_dokter INT PRIMARY KEY,
+    nama VARCHAR(30),
+    spesialis VARCHAR(30),
+    no_tlp INT,
+    kode_poli INT,
+    
+    FOREIGN KEY (kode_poli) 
+    REFERENCES poliklinik(kode_poli)
+);
+
+-- =====================================
+-- TABLE PASIEN
+-- =====================================
+CREATE TABLE pasien (
+    NIK INT PRIMARY KEY,
+    nama VARCHAR(30),
+    alamat VARCHAR(50),
+    sex BOOLEAN,
+    BOD TIMESTAMP
+);
+
+-- =====================================
+-- TABLE PENDAFTARAN
+-- =====================================
+CREATE TABLE pendaftaran (
+    no_antrean INT PRIMARY KEY,
+    kode_poli INT,
+    NIK INT,
+    tgl_lahir DATETIME,
+
+    FOREIGN KEY (kode_poli)
+    REFERENCES poliklinik(kode_poli),
+
+    FOREIGN KEY (NIK)
+    REFERENCES pasien(NIK)
+);
+
+-- =====================================
+-- TABLE OBAT
+-- =====================================
+CREATE TABLE obat (
+    kode_obat INT PRIMARY KEY,
+    nama_obat VARCHAR(50),
+    harga INT
+);
+
+-- =====================================
+-- TABLE REKAM_MEDIS
+-- =====================================
+CREATE TABLE rekam_medis (
+    no_rekam_medis INT PRIMARY KEY,
+    NIK INT,
+    kode_obat INT,
+    tgl_rm TIMESTAMP,
+
+    FOREIGN KEY (NIK)
+    REFERENCES pasien(NIK),
+
+    FOREIGN KEY (kode_obat)
+    REFERENCES obat(kode_obat)
+);
