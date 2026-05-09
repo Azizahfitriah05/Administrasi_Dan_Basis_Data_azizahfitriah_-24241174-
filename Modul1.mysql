@@ -1,8 +1,11 @@
-Nama : Azizah Fitriah 
-Nim : 24241174
+-- Nama : Azizah Fitriah 
+-- NIM 	: 24241174
+-- Kelas : PTI E
+-- Modul : 2
 
-CREATE DATABASE rumah_sakit;
-USE rumah_sakit;
+
+-- CREATE DATABASE rumah_sakit;
+-- USE rumah_sakit;
 
 -- =====================================
 -- TABLE POLIKLINIK
